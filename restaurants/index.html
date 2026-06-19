@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🍽️ Wien 69 Restaurants — Tabelle + Map</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <h1>🍽️ Wien 69 Restaurants</h1>
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('table')">📋 Tabelle</div>
+      <div class="tab" onclick="switchTab('map')">🗺️ Map</div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="sc"><div class="n">69</div><div class="l">Restaurants</div></div>
+    <div class="sc"><div class="n" id="sa">—</div><div class="l">Ø ★</div></div>
+    <div class="sc"><div class="n" id="sr">—</div><div class="l">Reviews</div></div>
+    <div class="sc"><div class="n" id="sb">—</div><div class="l">Beste</div></div>
+    <div class="sc"><div class="n" id="sbr">—</div><div class="l">Frühstück</div></div>
+  </div>
+
+  <!-- SEARCH / FILTER -->
+  <div class="sb">
+    <input type="text" id="q" placeholder="🔍 Suchen (Name, PLZ, Küche)...">
+    <select id="ft" onchange="render()"><option value="">Alle Typen</option></select>
+    <select id="fb" onchange="render()">
+      <option value="">Frühstück?</option>
+      <option value="1">✅ Ja</option>
+      <option value="0">❌ Nein</option>
+    </select>
+  </div>
+
+  <!-- TABLE PANEL -->
+  <div class="panel active" id="panel-table">
+    <table>
+      <thead>
+        <tr>
+          <th data-c="nr">#<span class="si">↕</span></th>
+          <th data-c="name">Restaurant<span class="si">↕</span></th>
+          <th data-c="type">Typ<span class="si">↕</span></th>
+          <th data-c="cuisine">Küche<span class="si">↕</span></th>
+          <th data-c="plz">PLZ / Ort<span class="si">↕</span></th>
+          <th data-c="rating">★<span class="si">↕</span></th>
+          <th data-c="reviews">Reviews<span class="si">↕</span></th>
+          <th data-c="_">Links</th>
+        </tr>
+      </thead>
+      <tbody id="tb"></tbody>
+    </table>
+  </div>
+
+  <!-- MAP PANEL -->
+  <div class="panel" id="panel-map">
+    <div class="map-wrap">
+      <div id="map"></div>
+      <div class="map-legend">
+        <div><span class="dot" style="background:#34d399"></span>★ ≥4,6 (Ausgezeichnet)</div>
+        <div><span class="dot" style="background:#fbbf24"></span>★ 4,2–4,5 (Gut)</div>
+        <div><span class="dot" style="background:#f87171"></span>★ &lt;4,2 (OK)</div>
+        <div><span class="dot" style="background:#a78bfa"></span>🍳 Frühstück/Brunch</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DATA: loaded as global, then replaced in app.js -->
+  <script src="data.js"></script>
+
+  <!-- LEAFLET -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- APP LOGIC -->
+  <script src="app.js"></script>
+</body>
+</html>

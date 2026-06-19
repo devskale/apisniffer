@@ -12,8 +12,43 @@ Discover, validate, and document HTTP APIs from live browser traffic.
 
 ## Setup
 
-1. Chrome Beta running → `mcp({ connect: "chrome-devtools" })`
-2. sweet-cookie installed → reads from **regular Chrome** (not Beta)
+### 1. Chrome DevTools MCP
+
+Chrome Beta must be running (with your normal profile — cookies, logins, everything).
+
+MCP config (`.mcp.json`):
+```json
+{
+  "mcpServers": {
+    "chrome-devtools": {
+      "command": "npx",
+      "args": [
+        "chrome-devtools-mcp@latest",
+        "--autoConnect",
+        "--channel=beta"
+      ]
+    }
+  }
+}
+```
+
+Then: `mcp({ connect: "chrome-devtools" })`
+
+**How it works:** `--channel=beta` + `--autoConnect` uses Chrome's built-in remote debugging (Chrome 144+). No `--remote-debugging-port` flag needed. Uses your default profile with all cookies.
+
+**One-time setup:** Open `chrome://inspect/#remote-debugging` in Chrome Beta and click **Enable remote debugging**. Then `mcp({ connect: "chrome-devtools" })` works.
+
+**Docs:** https://developer.chrome.com/blog/chrome-devtools-mcp-debug-your-browser-session
+
+**Troubleshooting:**
+- Chrome Beta not running → start it normally, then connect
+- `Could not connect to Chrome` → open `chrome://inspect/#remote-debugging` and enable remote debugging
+- `Could not find DevToolsActivePort for chrome at .../Chrome/` → `--channel=beta` not taking effect. Check `.mcp.json` has `--channel=beta`.
+- Stale connection → close/reopen Chrome Beta, reconnect MCP
+
+### 2. sweet-cookie
+
+sweet-cookie installed → reads from **regular Chrome** (not Beta). Both browsers must be logged in.
 
 **Gotchas:**
 - MCP `reqid` must be a **number**, not a string

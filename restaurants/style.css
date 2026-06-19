@@ -1,0 +1,79 @@
+/* ===== RESET & BASE ===== */
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0f172a;color:#e2e8f0}
+
+/* ===== TOP BAR ===== */
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:#1e293b;border-bottom:1px solid #334155;position:sticky;top:0;z-index:100}
+.topbar h1{font-size:1.2rem;color:#f8fafc}
+
+/* ===== TABS ===== */
+.tabs{display:flex;gap:0}
+.tab{padding:.5rem 1.2rem;cursor:pointer;font-size:.85rem;font-weight:600;color:#94a3b8;border-bottom:2px solid transparent;transition:all .2s}
+.tab:hover{color:#e2e8f0}
+.tab.active{color:#38bdf8;border-bottom-color:#38bdf8}
+
+/* ===== STATS ===== */
+.stats{display:flex;gap:.8rem;padding:1rem 2rem;background:#0f172a;flex-wrap:wrap}
+.sc{background:#1e293b;border-radius:8px;padding:.5rem 1rem;text-align:center;border:1px solid #334155}
+.sc .n{font-size:1.15rem;font-weight:700;color:#38bdf8}
+.sc .l{font-size:.65rem;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
+
+/* ===== SEARCH / FILTER BAR ===== */
+.sb{padding:.6rem 2rem;background:#0f172a;display:flex;gap:.8rem;flex-wrap:wrap}
+.sb input{background:#1e293b;border:1px solid #334155;border-radius:8px;padding:.5rem .8rem;color:#e2e8f0;font-size:.85rem;width:280px;outline:none;transition:border-color .2s}
+.sb input:focus{border-color:#38bdf8}
+select{background:#1e293b;border:1px solid #334155;border-radius:8px;padding:.5rem .8rem;color:#e2e8f0;font-size:.85rem;outline:none;cursor:pointer}
+
+/* ===== PANELS ===== */
+.panel{display:none;padding:1rem 2rem 2rem}
+.panel.active{display:block}
+
+/* ===== TABLE ===== */
+table{width:100%;border-collapse:collapse;background:#1e293b;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.3)}
+thead{background:#0f172a}
+th{padding:.65rem .55rem;text-align:left;font-weight:600;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:#94a3b8;border-bottom:2px solid #334155;cursor:pointer;user-select:none;white-space:nowrap}
+th:hover{color:#38bdf8}
+th .si{opacity:.3;margin-left:2px;font-size:.6rem}
+th.srt .si{opacity:1;color:#38bdf8}
+td{padding:.5rem .55rem;font-size:.82rem;border-bottom:1px solid #1e293b;vertical-align:middle}
+tr:hover{background:#273449}
+tr:last-child td{border-bottom:none}
+
+/* TABLE COLUMNS */
+.nr{color:#64748b;font-size:.75rem;width:32px}
+.nm{font-weight:600;color:#f1f5f9;min-width:150px}
+.typ{font-size:.72rem;color:#a78bfa;padding:2px 6px;border-radius:4px;background:#1e1b4b;display:inline-block;white-space:nowrap}
+.kue{color:#94a3b8;font-size:.75rem;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block}
+.loc{color:#94a3b8;font-size:.75rem;white-space:nowrap}
+.rt{white-space:nowrap;font-weight:700;font-size:.85rem}
+.st{color:#fbbf24;margin-right:2px}
+.rv{color:#64748b;font-size:.72rem}
+
+/* LINKS */
+a{color:#38bdf8;text-decoration:none;font-size:.75rem;white-space:nowrap}
+a:hover{text-decoration:underline}
+
+/* RATING COLORS */
+.br{color:#34d399;font-size:.7rem;font-weight:600}
+.rh{color:#34d399}.rm{color:#fbbf24}.rl{color:#f87171}
+.pr{color:#f472b6;font-size:.78rem;font-weight:600}
+
+/* ===== MAP ===== */
+#map{width:100%;height:calc(100vh - 220px);border-radius:12px;overflow:hidden}
+.map-wrap{position:relative;background:#1e293b;border-radius:12px;overflow:hidden}
+.map-popup{background:#1e293b;border:1px solid #334155;border-radius:10px;padding:10px 14px;max-width:260px;box-shadow:0 8px 32px rgba(0,0,0,.5)}
+.map-popup h3{font-size:.9rem;color:#f1f5f9;margin-bottom:4px}
+.map-popup .mp-rating{font-size:.8rem;font-weight:700}
+.map-popup .mp-link{font-size:.72rem;color:#38bdf8;margin-top:4px;display:block}
+.map-legend{position:absolute;bottom:16px;left:16px;background:#1e293bee;border:1px solid #334155;border-radius:10px;padding:10px 14px;z-index:1;backdrop-filter:blur(8px)}
+.map-legend div{font-size:.72rem;color:#cbd5e1;display:flex;align-items:center;gap:6px;margin:3px 0}
+.dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  body{padding:0}
+  .topbar,.panel{padding-left:1rem;padding-right:1rem}
+  table{font-size:.75rem}
+  th,td{padding:.4rem}
+  .sb input{width:100%}
+}
